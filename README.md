@@ -32,7 +32,7 @@
 
 1. **Clone repository**:
    ```bash
-   git clone https://github.com/vngctcreative/discord-webhook-sender.git
+   git clone https://github.com/vngctcreative/webhook-discord.git
    cd discord-webhook-sender
    ```
 
