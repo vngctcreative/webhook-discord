@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+:root {
+    --bg-color: #252424;
+    --text-color: #fff;
+    --form-bg: #555;
+    --preview-bg: #444;
+    --embed-bg: #333;
+    --button-bg: #fff;
+    --button-text-color: #252424;
+    --button-hover-bg: #00ffff;
+    --header-bg: #252424;
+    --input-bg: #4e4e4e;
+    --input-text-color: #fff;
+}
+
+[data-theme="light"] {
+    --bg-color: #fff;
+    --text-color: #000;
+    --form-bg: #eee;
+    --preview-bg: #ddd;
+    --embed-bg: #ccc;
+    --button-bg: #000;
+    --button-text-color: #fff;
+    --button-hover-bg: #00ffff;
+    --header-bg: #fff;
+    --input-bg: #fff;
+    --input-text-color: #000;
+}
+
+header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Đảm bảo header-container được căn giữa */
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background: var(--header-bg);
+    z-index: 1000;
+    padding: 10px 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Giữa hai phần nội dung */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Giới hạn chiều rộng của các phần tử con */
+    padding: 0 20px; /* Thêm padding để các nút không sát vào cạnh */
+}
+
+.left-content {
+    display: flex;
+    justify-content: flex-start; /* Căn các nút bấm về bên trái */
+    align-items: center;
+    flex: 1; /* Để phần này chiếm không gian còn lại */
+}
+
+.right-content {
+    display: flex;
+    justify-content: flex-end; /* Căn nút chuyển đổi về bên phải */
+    align-items: center;
+}
+
+#menu {
+    display: flex;
+    gap: 20px;
+}
+
+#menu button {
+    padding: 10px 15px;
+    background: var(--button-bg);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+#menu button:hover {
+    background: var(--button-hover-bg);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #00ffff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    width: 90%;
+    overflow: auto;
+}
+
+#form-container, #preview-container {
+    background: var(--form-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    width: 100%;
+}
+
+.form-group {
+    margin: 15px 0;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], textarea, select, input[type="color"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin: 0 auto;
+    display: block;
+    font-size: 16px;
+    background: var(--input-bg);
+    color: var(--input-text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+input[type="checkbox"].styled-checkbox {
+    display: none;
+}
+
+input[type="checkbox"].styled-checkbox + label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+input[type="checkbox"].styled-checkbox + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #1d6e6e;
+    border-radius: 4px;
+    background: var(--input-bg);
+}
+
+input[type="checkbox"].styled-checkbox:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: #1d6e6e;
+    border-radius: 2px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background: var(--button-bg);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 5px;
+    color: var(--button-text-color);
+}
+
+button:hover {
+    background: var(--button-hover-bg);
+}
+
+#footer {
+    margin-top: 20px;
+}
+
+a, a:visited {
+    color: var(--text-color);
+}
+
+#log {
+    margin-top: 10px;
+    color: #6eff2b;
+    text-align: center;
+}
+
+#preview-container {
+    width: 100%;
+}
+
+#preview {
+    background: var(--preview-bg);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#preview-header {
+    display: flex;
+    align-items: center;
+}
+
+#preview-username {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#preview-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#preview-content {
+    margin: 10px 0;
+}
+
+#preview-embed {
+    background: var(--embed-bg);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#preview-embed-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#preview-embed-description {
+    margin: 10px 0;
+}
+
+#preview-embed-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+#preview-embed-footer {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Thêm đoạn này vào cuối file CSS của bạn hoặc phần phù hợp */
+.input-with-button {
+    display: flex;
+    align-items: center;
+}
+
+.input-with-button input[type="text"] {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.input-with-button button {
+    margin-left: 10px;
+}
+
+#colorPickerButton {
+    margin-left: 10px;
+}

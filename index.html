@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Webhook Sender</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <header id="header">
+            <div class="header-container">
+                <div class="left-content">
+                    <button id="saveConfig">Lưu cấu hình</button>
+                    <button id="loadConfig">Tải cấu hình</button>
+                    <button id="clearFields">Clean</button>
+                </div>
+            </div>
+        <div class="right-content">
+            <label class="switch">
+                <input type="checkbox" id="toggleTheme">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </header>
+    <main id="container">
+        <div id="form-container">
+            <div class="form-group">
+                <label for="link">Link Webhook:</label>
+                <input type="text" id="link" placeholder="https://discordapp.com/api/webhooks/...">
+            </div>
+            <div class="form-group">
+                <label for="username">Tên người gửi:</label>
+                <input type="text" id="username" placeholder="Tên người gửi" value="Code by Creative">
+            </div>
+            <div class="form-group">
+                <label for="avatar">URL Avatar:</label>
+                <input type="text" id="avatar" placeholder="URL ảnh đại diện">
+            </div>
+            <div class="form-group">
+                <label for="messageType">Loại tin nhắn:</label>
+                <select id="messageType">
+                    <option value="plaintext">Plaintext</option>
+                    <option value="embed">Embed</option>
+                </select>
+            </div>
+            <div class="form-group embed-options" style="display: none;">
+                <input type="checkbox" id="includeContent" class="styled-checkbox">
+                <label for="includeContent">Bao gồm nội dung</label>
+            </div>
+            <div class="form-group content-group">
+                <label for="content">Nội dung:</label>
+                <textarea id="content" placeholder="Nhập nội dung tin nhắn"></textarea>
+            </div>
+            <div class="form-group embed-options" style="display: none;">
+                <label for="embedTitle">Tiêu đề Embed:</label>
+                <input type="text" id="embedTitle" placeholder="Tiêu đề Embed">
+            </div>
+            <div class="form-group embed-options" style="display: none;">
+                <label for="embedDescription">Mô tả Embed:</label>
+                <textarea id="embedDescription" placeholder="Mô tả Embed"></textarea>
+            </div>
+            <div class="form-group embed-options" style="display: none;">
+                <label for="embedImage">URL Hình ảnh Embed:</label>
+                <input type="text" id="embedImage" placeholder="URL hình ảnh Embed">
+            </div>
+            <div class="form-group embed-options" style="display: none;">
+                <label for="embedColor">Màu Embed:</label>
+                <div class="input-with-button">
+                    <input type="text" id="embedColor" placeholder="#hex hoặc tên màu">
+                    <button id="colorPickerButton">Chọn màu</button>
+                    <input type="color" id="colorPicker" style="display: none;">
+                </div>
+            </div>
+            <div class="form-group embed-options" style="display: none;">
+                <label for="embedFooter">Chân trang Embed:</label>
+                <input type="text" id="embedFooter" placeholder="Chân trang Embed">
+            </div>
+            <div class="form-group">
+                <label for="messageLink">Link tin nhắn:</label>
+                <div class="input-with-button">
+                    <input type="text" id="messageLink" placeholder="https://discord.com/channels/...">
+                    <button id="loadMessage">Load</button>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="btn">Gửi</button>
+                <button id="btnWithTimestamp">Gửi với thời gian hiện tại</button>
+            </div>
+            <p id="log"></p>
+        </div>
+        <div id="preview-container">
+            <h2>Xem trước tin nhắn</h2>
+            <div id="preview">
+                <div id="preview-header">
+                    <div id="preview-avatar"></div>
+                    <div id="preview-username"></div>
+                </div>
+                <div id="preview-content"></div>
+                <div id="preview-embed" style="display: none;">
+                    <div id="preview-embed-title"></div>
+                    <div id="preview-embed-description"></div>
+                    <div id="preview-embed-image"></div>
+                    <div id="preview-embed-footer"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <p>Copyright 2024 Code by Creative</p>
+    </footer>
+    <script src="jquery.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
